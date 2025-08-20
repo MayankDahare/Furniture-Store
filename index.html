@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Furniture Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+
+  <!-- Load Supabase SDK FIRST -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+</head>
+<body>
+
+
+  <!-- <div id="loading-screen">
+    <div class="border-track">
+      <div class="glow-ball"></div>
+    </div>
+  </div>
+   -->
+
+
+<!-- Glowing Animated 3D Cube Loader -->
+<div id="loader">
+  <audio id="dingSound" autoplay muted playsinline>
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-confirmation-tone-2867.mp3" type="audio/mp3">
+  </audio>
+  
+  <div class="particles"></div>
+  <div class="cube">
+    <div class="face front">🛋️</div>
+    <div class="face back">🛏️</div>
+    <div class="face right">🪑</div>
+    <div class="face left">🪟</div>
+    <div class="face top">🧸</div>
+    <div class="face bottom">🖼️</div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  window.addEventListener("load", function () {
+    const sound = document.getElementById("loaderSound");
+    sound.play();
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      loader.style.opacity = "0";
+      loader.style.transition = "opacity 1.2s ease";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 1200);
+    }, 5500);
+  });
+</script>
+
+
+ 
+
+ <!-- Main Navbar -->
+<div id="main">
+  <div id="nav">
+    <h2><i class="ri-home-4-line"></i> Dahare Furniture</h2>
+    <i class="ri-menu-3-line" id="menu-icon"></i>
+  </div>
+</div>
+
+<!-- Mobile Full Menu -->
+<div id="full">
+  <h4>🏠 Home</h4>
+  <h4>🪑 Products</h4>
+  <h4>🛠️ Services</h4>
+  <h4>📖 About Us</h4>
+  <h4>📞 Contact</h4>
+  <i class="ri-close-line" id="close-icon"></i>
+</div>
+
+
+
+<script>
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const fullMenu = document.getElementById("full");
+
+  menuIcon.addEventListener("click", () => {
+    fullMenu.classList.add("active");
+  });
+
+  closeIcon.addEventListener("click", () => {
+    fullMenu.classList.remove("active");
+  });
+</script>
+
+
+
+
+  <!-- home -->
+
+
+ <!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Crafted Comforts for Your Home</h1>
+    <p>Discover furniture that blends elegance and comfort perfectly.</p>
+    <a href="#" class="hero-btn">Explore Now</a>
+  </div>
+</section>
+
+
+  
+    <!-- Product Section -->
+
+<section class="products">
+    <h2>Popular Products</h2>
+    <div class="product-slider">
+      <div class="product-card">
+        <img src="Luxury Sofa.jpg" alt="Sofa">
+        <h4>Luxury Sofa</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="King Size Bed.webp" alt="Bed">
+        <h4>King Size Bed</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Wood Dining Set.webp" alt="Dining Set">
+        <h4>Wood Dining Set</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Modern Chair.webp" alt="Chair">
+        <h4>Modern Chair</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Classic Coffee Table.jpg" alt="Coffee Table">
+        <h4>Classic Coffee Table</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Wooden Bookshelf.webp" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="https://i.ibb.co/Mck2b1y/shelf.jpg" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="https://i.ibb.co/Mck2b1y/shelf.jpg" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="https://i.ibb.co/Mck2b1y/shelf.jpg" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="https://i.ibb.co/Mck2b1y/shelf.jpg" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+      <div class="product-card">
+        <img src="https://i.ibb.co/Mck2b1y/shelf.jpg" alt="Bookshelf">
+        <h4>Wooden Bookshelf</h4>
+        <a href="#contact" class="product-btn">Contact Now</a>
+      </div>
+    </div>
+  </section>
+  
+
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-card">
+        <h3>Premium Quality</h3>
+        <p>We use the finest wood and materials.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Modern Design</h3>
+        <p>Trendy and timeless furniture collections.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Fast Delivery</h3>
+        <p>We deliver across India in 5-7 days.</p>
+      </div>
+    </section>
+  
+  
+    <!-- <section class="services-section">
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <div class="services-container">
+        <div class="service-card">
+          <i class="fas fa-couch"></i>
+          <h3>Custom Furniture</h3>
+          <p>Tailor-made furniture to fit your space & style perfectly.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-tools"></i>
+          <h3>Repair & Polish</h3>
+          <p>Give your old furniture a new life with our expert touch.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-truck"></i>
+          <h3>Free Delivery</h3>
+          <p>Fast & free delivery at your doorstep in Balaghat region.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-drafting-compass"></i>
+          <h3>Interior Consultation</h3>
+          <p>Need decor help? Our experts are ready to guide you.</p>
+        </div>
+      </div>
+    </section> -->
+
+
+
+    <section class="services-section">
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <div class="services-container">
+        <div class="service-card">
+          <i class="fas fa-couch"></i>
+          <h3>Custom Furniture</h3>
+          <p>Tailor-made furniture to fit your space & style perfectly.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-tools"></i>
+          <h3>Repair & Polish</h3>
+          <p>Give your old furniture a new life with our expert touch.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-truck"></i>
+          <h3>Free Delivery</h3>
+          <p>Fast & free delivery at your doorstep in Balaghat region.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-drafting-compass"></i>
+          <h3>Interior Consultation</h3>
+          <p>Need decor help? Our experts are ready to guide you.</p>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+
+
+
+  </main>
+
+
+
+<!-- Map Section -->
+<section class="map-section">
+  <h2>Visit Our Store</h2>
+  <div class="map-container">
+
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220.08192231504995!2d80.18804308361963!3d21.79527790038279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2a5a29e70a4183%3A0x8f396092c38139af!2s811%2C%20Gaykhuri%2C%20Balaghat%2C%20Madhya%20Pradesh%20481001!5e1!3m2!1sen!2sin!4v1744891040539!5m2!1sen!2sin"
+      width="100%"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+  </div>
+</section>
+
+
+
+<script>
+  const mapSection = document.querySelector('.map-container');
+
+  const mapObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  mapObserver.observe(mapSection);
+</script>
+
+
+
+<!-- about -->
+
+<section id="about" class="about-section">
+  <div class="about-container">
+    <h2><span>About</span> Dahare Furniture</h2>
+    <p>
+      <strong class="highlight">Bringing Style & Comfort to Every Home</strong> — At <b>Dahare Furniture</b>, we specialize in crafting elegant and durable furniture to fit every lifestyle. Whether it's a modern sofa, a cozy bed, or a classy dining set — we deliver excellence in every piece.
+    </p>
+    <p>
+      Located in <strong class="highlight">Gaikhuri, Balaghat</strong>, we combine traditional values with modern design, providing affordable furniture that transforms your home.
+    </p>
+    <p class="moto">
+      🪑 <em>“Furniture that fits your style, made with heart.”</em>
+    </p>
+  </div>
+</section>
+
+
+<!-- contact -->
+
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2>Contact <span>Us</span></h2>
+    <p class="subtitle">We’d love to hear from you! Drop a message or reach out directly.</p>
+
+    <div class="contact-content">
+      <!-- Contact Form -->
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">📩 Send Message</button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>📍 Our Location</h3>
+        <p>Gaikhuri, Balaghat (M.P)<br>Near Sardar Patel College<br>PIN: 481001</p>
+
+        <h3>📞 Call Us</h3>
+        <p><a href="tel:+919893362709">+91 9893 362709</a></p>
+
+        <h3>📧 Email</h3>
+        <p><a href="mailto:mayankdahare56@gmail.com">mayankdahare56@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- footer -->
+
+<footer class="footer wow-fade-in">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>Dahare <span>Furniture</span></h2>
+      <p>Bringing comfort & elegance to your home from Gaykhuri, Balaghat (M.P)</p>
+    </div>
+
+    <div class="footer-info">
+      <h3>Contact Us</h3>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> Gaikhuri, Balaghat (M.P), Near Sardar Patel College, 481001</li>
+        <li><i class="fas fa-phone-alt"></i> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></li>
+        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/91XXXXXXXXXX">Chat on WhatsApp</a></li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:daharefurniture@gmail.com">daharefurniture@gmail.com</a></li>
+        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/daharefurniture" target="_blank">@daharefurniture</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-extra">
+      <h3>Why Us?</h3>
+      <p>✅ Premium Quality<br>
+         ✅ Affordable Prices<br>
+         ✅ Custom Designs<br>
+         ✅ 100% Customer Satisfaction</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Dahare Furniture. Made with ❤️ by Mayank Dahare.</p>
+  </div>
+</footer>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js" integrity="sha512-f6bQMg6nkSRw/xfHw5BCbISe/dJjXrVGfz9BSDwhZtiErHwk7ifbmBEtF9vFW8UNIQPhV2uEFVyI/UHob9r7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+</html>

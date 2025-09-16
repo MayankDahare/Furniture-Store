@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dahare-furniture.vercel.app/sitemap.xml

@@ -3,62 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="daharefurniture, initial-scale=1.0" />
+  <meta name="viewport" content="Dahare furniture, initial-scale=1.0" />
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="GlV8jFPg2tfxMgogGr6LU_2plCkdm6wSeE8vfBS74ow" />
-
-  <!-- Title & Description -->
-  <title>Dahare Furniture | Best Furniture Shop in Balaghat</title>
-  <meta name="description" content="Dahare Furniture - Premium Sofa, Bed, Chair, Table and more in Balaghat. Affordable prices, stylish designs, and trusted quality.">
-
-  <!-- Keywords -->
-  <meta name="keywords" content="Dahare Furniture, furniture Dahare, Balaghat furniture, furniture shop in Balaghat, sofa Balaghat, bed Balaghat, wooden furniture Balaghat, stylish furniture, home furniture Balaghat, office furniture Balaghat, Gaykhuri furniture, custom furniture Balaghat">
-
-  <!-- Open Graph (Facebook/WhatsApp) -->
-  <meta property="og:title" content="Dahare Furniture - Best Furniture in Balaghat" />
-  <meta property="og:description" content="Premium Sofa, Bed, Chair, Table and more in Balaghat. Affordable & stylish furniture at Dahare Furniture." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dahare-furniture.vercel.app" />
-  <meta property="og:image" content="https://dahare-furniture.vercel.app/preview.jpg" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dahare Furniture - Best Furniture in Balaghat">
-  <meta name="twitter:description" content="Sofa, Bed, Chair, Table and more in Balaghat. Affordable & stylish furniture at Dahare Furniture.">
-  <meta name="twitter:image" content="https://dahare-furniture.vercel.app/preview.jpg">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://dahare-furniture.vercel.app" />
-
-  <!-- Schema Markup (Local Business) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FurnitureStore",
-    "name": "Dahare Furniture",
-    "image": "https://dahare-furniture.vercel.app/preview.jpg",
-    "url": "https://dahare-furniture.vercel.app",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Gaykhuri",
-      "addressLocality": "Balaghat",
-      "addressRegion": "Madhya Pradesh",
-      "postalCode": "481001",
-      "addressCountry": "IN"
-    },
-    "telephone": "+91-9303427xxx"
-  }
-  </script>
-
-  <!-- CSS & Icons -->
+  <!-- ------------ -->
+  <meta name="description" content="Dahare Furniture - Sofa, Bed, Chair and more in Balaghat. Affordable and stylish furniture for your home and office.">
+  
+  
+  <<title>Dahare Furniture | Best Furniture in Balaghat</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 
-  <!-- Supabase SDK -->
+  <!-- Load Supabase SDK FIRST -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
 
  <!-- ✅ Updated Navbar with Options -->

@@ -86,15 +86,16 @@
 </div> -->
 
 
-<!-- Your Original Navbar -->
-<div id="main" style="position: sticky; top: 0; z-index: 999; ">
-  <div id="nav"  
-       style="display: flex; justify-content: space-between; align-items: center; 
-              padding: 15px 30px; 
-              background: rgba(104, 86, 86, 0.8); 
-              backdrop-filter: blur(12px); 
-              -webkit-backdrop-filter: blur(12px); 
-              border-bottom: 1px solid rgba(0,0,0,0.1);">
+<!-- ========== Navbar (original markup, small safe tweak) ========== -->
+<div id="main" style="position: sticky; top: 0; z-index: 999;">
+  <div id="nav"
+       style="display: flex; justify-content: space-between; align-items: center;
+              padding: 15px 30px;
+              background: rgba(104, 86, 86, 0.8);
+              backdrop-filter: blur(12px);
+              -webkit-backdrop-filter: blur(12px);
+              border-bottom: 1px solid rgba(0,0,0,0.1);
+              position: relative;"> <!-- position: relative added for safe absolute positioning -->
               
     <h2 style="margin: 0; font-size: 20px; color: white;">
       <i class="ri-home-4-line"></i> Dahare Furniture
@@ -110,14 +111,16 @@
   </div>
 </div>
 
-<!-- ✅ Extra Code for Hamburger -->
+<!-- ========== Styles for hamburger, menu, overlay ========== -->
 <style>
-/* Hide hamburger by default */
+/* Hamburger hidden by default */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  z-index: 1005; /* high so it sits above menu visually */
+  padding: 6px;
 }
 .hamburger span {
   width: 25px;
@@ -127,7 +130,19 @@
   transition: 0.3s;
 }
 
-/* Mobile Styles */
+/* Overlay (background dim) */
+/* IMPORTANT: set overlay z-index lower than #main (which has z-index: 999)
+   so the nav (inside #main) stays above it and links remain clickable. */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 998; /* <- below #main (999) */
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
   .nav-links {
     display: none !important;
@@ -136,21 +151,31 @@
     top: 60px;
     right: 0;
     background: rgba(104, 86, 86, 0.95);
-    width: 200px;
+    width: 220px;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.2s;
+    z-index: 1002; /* visible above overlay */
+    pointer-events: auto; /* ensure links accept clicks */
   }
 
   .nav-links.active {
     display: flex !important;
+    transform: translateX(0);
   }
 
   .hamburger {
     display: flex;
   }
+
+  .overlay.active {
+    display: block;
+    animation: fadeIn 0.18s ease;
+  }
 }
 
-/* Animation for hamburger */
+/* Hamburger animation -> X */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
@@ -160,23 +185,82 @@
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translateY(-8px);
 }
+
+/* small overlay fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* optional: smooth scroll when clicking anchors */
+html { scroll-behavior: smooth; }
 </style>
 
+<!-- ========== Script (robust: DOMContentLoaded, avoid duplicates) ========== -->
 <script>
-const hamburger = document.createElement("div");
-hamburger.classList.add("hamburger");
-hamburger.innerHTML = "<span></span><span></span><span></span>";
+window.addEventListener('DOMContentLoaded', () => {
+  // create hamburger if not already present
+  let hamburger = document.querySelector('#nav .hamburger');
+  if (!hamburger) {
+    hamburger = document.createElement('div');
+    hamburger.className = 'hamburger';
+    hamburger.innerHTML = '<span></span><span></span><span></span>';
+    document.querySelector('#nav').appendChild(hamburger);
+  }
 
-document.querySelector("#nav").appendChild(hamburger);
+  // create overlay if not present
+  let overlay = document.querySelector('.overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
+  }
 
-const navLinks = document.querySelector(".nav-links");
+  const navLinks = document.querySelector('.nav-links');
+  if (!navLinks) return; // defensive
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navLinks.classList.toggle("active");
+  // Toggle menu
+  const openMenu = () => {
+    hamburger.classList.add('active');
+    navLinks.classList.add('active');
+    overlay.classList.add('active');
+  };
+  const closeMenu = () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+    overlay.classList.remove('active');
+  };
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (navLinks.classList.contains('active')) closeMenu();
+    else openMenu();
+  });
+
+  // Close when clicking any nav link (let default anchor behavior run)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      // close immediately so user sees menu close, anchor navigation still works
+      closeMenu();
+    });
+  });
+
+  // Close when clicking overlay (outside)
+  overlay.addEventListener('click', () => {
+    closeMenu();
+  });
+
+  // Extra: close if window resized to desktop size (avoid stuck open)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+
+  // Optional: close when pressing Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
 });
 </script>
-
 
 
   <!-- Hero Section -->

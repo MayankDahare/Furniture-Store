@@ -62,6 +62,31 @@
 <body>
 
  <!-- ✅ Updated Navbar with Options -->
+<!-- <div id="main" style="position: sticky; top: 0; z-index: 999; ">
+  <div id="nav"  
+       style="display: flex; justify-content: space-between; align-items: center; 
+              padding: 15px 30px; 
+              background: rgba(104, 86, 86, 0.8); 
+              backdrop-filter: blur(12px); 
+              -webkit-backdrop-filter: blur(12px); 
+              border-bottom: 1px solid rgba(0,0,0,0.1);">
+              
+    <h2 style="margin: 0; font-size: 20px; color: white;">
+      <i class="ri-home-4-line"></i> Dahare Furniture
+    </h2>
+    
+    <div style="display: flex; gap: 20px; font-size: 15px; font-weight: 500;" class="nav-links">
+      <a style="text-decoration: none; color: #070707;" href="#hero" class="nav-item">Home</a>
+      <a style="text-decoration: none; color: #000;" href="#products" class="nav-item">Products</a>
+      <a style="text-decoration: none; color: #0a0510;" href="#services" class="nav-item">Services</a>
+      <a style="text-decoration: none; color: #000;" href="#about" class="nav-item">About</a>
+      <a style="text-decoration: none; color: #d8de97;" href="#contact" class="nav-item">Contact</a>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- Your Original Navbar -->
 <div id="main" style="position: sticky; top: 0; z-index: 999; ">
   <div id="nav"  
        style="display: flex; justify-content: space-between; align-items: center; 
@@ -84,6 +109,74 @@
     </div>
   </div>
 </div>
+
+<!-- ✅ Extra Code for Hamburger -->
+<style>
+/* Hide hamburger by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(104, 86, 86, 0.95);
+    width: 200px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Animation for hamburger */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+</style>
+
+<script>
+const hamburger = document.createElement("div");
+hamburger.classList.add("hamburger");
+hamburger.innerHTML = "<span></span><span></span><span></span>";
+
+document.querySelector("#nav").appendChild(hamburger);
+
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+</script>
+
 
 
   <!-- Hero Section -->
